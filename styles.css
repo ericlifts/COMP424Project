@@ -1,0 +1,76 @@
+body {
+    text-align: center;
+}
+form {
+    display: inline-block;
+    
+}
+
+.signuperror {
+    padding-top: 14px;
+    font-family: arial;
+    font-size: 16px;
+    color: red;
+    text-align: center;
+  }
+
+  .signupsuccess {
+    padding-top: 14px;
+    font-family: arial;
+    font-size: 16px;
+    color: green;
+    text-align: center;
+  }
+  
+  .logout {
+      color:red;
+  }
+
+  .loggedin {
+      color: green;
+  }
+
+  .logoutbutton {
+      text-align: right;
+  }
+
+.red {
+    color:red;
+}
+
+.green {
+    color: green;
+}
+
+.blogspage {
+float: left;
+}
+.logout2 {
+    float: right;
+}
+
+.createblog {
+    
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      
+      
+      
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      
+}
+
+.table table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+ .table td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
