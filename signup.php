@@ -1,7 +1,7 @@
 <?php
 
 
-if (isset($_POST['submit'] && $_POST['g-recaptcha-response'] != "")) {
+if (isset($_POST['submit']) && ($_POST['g-recaptcha-response'] != "")) {
 
   
   require 'insert.php';
@@ -107,6 +107,7 @@ if (isset($_POST['submit'] && $_POST['g-recaptcha-response'] != "")) {
       }
     }
     }
+  }
   }
   
   mysqli_stmt_close($stmt);
