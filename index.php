@@ -7,6 +7,7 @@ include_once 'insert.php';
 <head>
 <link rel="stylesheet" href="styles.css?v=<?php echo time(); ?>">
 <link href="css/bootstrap.min.css" rel="stylesheet" />
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <title>Register Form</title>
 </head>
 <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
@@ -95,6 +96,8 @@ include_once 'insert.php';
                     <label for="confirm_password" class="form-label">Confirm Password</label>
                     <input type="password" class="form-control" name="confirm_password" required>
                   </div>
+                  <div class="g-recaptcha" data-sitekey="6LdEKLgfAAAAALKfvvk6pyZhTgeTF3Jj_NJXlyEh"></div>
+                  
                   <div class="d-flex justify-content-center">
                     <!-- <button type="button" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Login</button> -->
                     <button type="submit" value="Submit" name="submit" class="btn btn-primary">Register</button>

@@ -1,9 +1,16 @@
 <?php
 
-if (isset($_POST['submit'])) {
+
+if (isset($_POST['submit'] && $_POST['g-recaptcha-response'] != "")) {
 
   
   require 'insert.php';
+  $Secret = '6LdEKLgfAAAAANyk-By0CYFwOGj_7Z2Gh6zqqhSD';
+  $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $Secret . '&response=' . $_POST['g-recaptcha-response']);
+  $responseData = json_decode($verifyResponse);
+  if($responseData-> success) {
+
+  
 
   
     $username = mysqli_real_escape_string($conn, $_POST['username']);
@@ -24,9 +31,9 @@ if (isset($_POST['submit'])) {
     if (!preg_match("/^[a-zA-Z0-9]*$/", $username) && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     header("Location: index.php?error=invaliduidmail");
     exit();
-  }
+    }
  
-  else if (!preg_match("/^[a-zA-Z0-9]*$/", $username)) {
+    else if (!preg_match("/^[a-zA-Z0-9]*$/", $username)) {
     header("Location: index.php?error=invaliduid&mail=".$email);
     exit();
   }
