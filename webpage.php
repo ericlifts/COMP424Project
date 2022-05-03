@@ -28,9 +28,9 @@ if (empty($_SESSION['id']) || $_SESSION['email'] == '') {
 </head>
 
 
-<form class = "logout2" action="logout.php" method="post" class = "logoutbutton">
+<!-- <form class = "logout2" action="logout.php" method="post" class = "logoutbutton">
             <button type="submit" name="login-submit">Logout</button>
-</form>
+</form> -->
 
 <body>
 <div class="d-flex justify-content-center">
@@ -51,6 +51,12 @@ if (empty($_SESSION['id']) || $_SESSION['email'] == '') {
       </div>
       </div>
 
+      <br>
+      <div class="d-flex justify-content-center">
+        <form class = "logout2" action="logout.php" method="post" class = "logoutbutton">
+              <button type="submit" name="login-submit" class="btn btn-primary">Logout</button>
+        </form>
+      </div>
 
 
 </body>
