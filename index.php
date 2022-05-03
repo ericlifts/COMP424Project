@@ -49,11 +49,26 @@ include_once 'insert.php';
               echo'<p class="signuperror">Password is weak!';
               echo '<p class="signuperror">Your password must be at least 8 characters in length and must contain at least one number, one upper case letter, one lower case letter and one special character!</p>';
             }
+            else if ($_GET["error"] == "newpwd=pwdnotsame") {
+              echo'<p class="signuperror">Passwords do not match!';
+            }
+            else if ($_GET["error"] == "newpwd=empty") {
+              echo'<p class="signuperror">Empty password field!';
+            }
+            else if ($_GET["error"] == "access=denied") {
+              echo'<p class="signuperror">Acces denied, please create an account and login to visit this page!';
+            }
           }
           // Here we create a success message if the new user was created.
           else if (isset($_GET["signup"])) {
             if ($_GET["signup"] == "success") {
               echo '<p class="signupsuccess">Signup successful!</p>';
+            }
+          }
+          //password reset success message
+          else if (isset($_GET["newpwd"])) {
+            if ($_GET["newpwd"] == "passwordupdated") {
+              echo '<p class="signupsuccess">Password reset successful!</p>';
             }
           }
           ?>

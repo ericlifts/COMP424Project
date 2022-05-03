@@ -9,7 +9,7 @@ if (isset($_POST['login-submit'])) {
 
   
   if (empty($mailuid) || empty($password)) {
-    header("Location: index.php?error=emptyfields&mailuid=".$mailuid);
+    header("Location: signin.php?error=emptyfields&mailuid=".$mailuid);
     exit();
   }
   else {
@@ -17,7 +17,7 @@ if (isset($_POST['login-submit'])) {
     $stmt = mysqli_stmt_init($conn);
     
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-      header("Location: index.php?error=sqlerror");
+      header("Location: signin.php?error=sqlerror");
       exit();
     }
     else {
@@ -29,7 +29,7 @@ if (isset($_POST['login-submit'])) {
         $pwdCheck = password_verify($password, $row['password']);
        // $pwdCheck = $row['password'];//replace with above code for hasing password
         if ($pwdCheck == false) { // if ($pwdCheck == false)
-          header("Location: index.php?error=wrongpwd");
+          header("Location: signin.php?error=wrongpwd");
           exit();
         }
         else if ($pwdCheck == true) {
@@ -45,7 +45,7 @@ if (isset($_POST['login-submit'])) {
         }
       }
       else {
-        header("Location: index.php?login=wronguidpwd");
+        header("Location: signin.php?error=wronguidpwd");
         exit();
       }
     }
