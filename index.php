@@ -139,14 +139,14 @@ include_once 'insert.php';
       <div>
         <section>
           <?php
-          if(isset($_SESSION['id'])) {
-            // echo '<p class = "loggedin"> You are logged in!</p>';
-            header("Location: webpage.php");
-            exit();
-          }
-          else {
-            echo '<p class = "logout"> You are logged out!</p>';
-          }
+          // if(isset($_SESSION['id'])) {
+          //   // echo '<p class = "loggedin"> You are logged in!</p>';
+          //   header("Location: webpage.php");
+          //   exit();
+          // }
+          // else {
+          //   echo '<p class = "logout"> You are logged out!</p>';
+          // }
           ?>
         </section>
       </div>
