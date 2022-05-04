@@ -38,6 +38,18 @@ if (isset($_POST['login-submit'])) {
           $_SESSION['email'] = $row['email'];
           $_SESSION['firstname'] = $row['firstName'];
           $_SESSION['lastname'] = $row['lastName'];
+          $_SESSION['numLogins'] = $row['numLogins'];
+
+          // Get the current date
+          date_default_timezone_set('America/Los_Angeles');
+          $date = date("Y/m/d H:i:s");
+          $_SESSION['loginDate'] = $date;
+
+          // Update the number of logins and last login date for the user
+          $email = $row["email"];
+          $username = $row["username"];
+          $updateSQL = "UPDATE users SET numLogins=numLogins + 1, loginDate=\"$date\" WHERE username=\"$username\" OR email=\"$email\"";
+          mysqli_query($conn, $updateSQL);
 
          
           header("Location: webpage.php?login=success");

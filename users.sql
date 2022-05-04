@@ -6,6 +6,8 @@ CREATE TABLE users (
     firstName varchar(20) not null,
     lastName varchar(20) not null,
     birthday varchar(20) not null,
+    numLogins int,
+    loginDate DATE,
     email varchar(40) UNIQUE not null
 );
 
