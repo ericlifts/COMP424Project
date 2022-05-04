@@ -109,7 +109,7 @@ include_once 'insert.php';
                     <span class="help-block">Use 8 or more characters with a mix of letters, numbers & symbols</span>
                     <!-- Realtime Password Validation -->
                     <div class="card mt-2 p-2 d-none" id="passwordValidation">
-                      <p>Password must contain the following: </p>
+                      <p>Password needs: </p>
                       <ul>
                         <li class="text-danger" id="letter">A <b>lowercase</b> letter</li>
                         <li class="text-danger" id="capital">A <b>capital (uppercase)</b> letter</li>
