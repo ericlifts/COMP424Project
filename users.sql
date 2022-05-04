@@ -20,3 +20,11 @@ CREATE TABLE pwdReset (
     pwdResetToken LONGTEXT NOT NULL,
     pwdResetExpires TEXT NOT NULL
 );
+
+-- TABLE FOR LOGGING LOGIN ATTEMPTS
+CREATE TABLE loginAttempts (
+	id int PRIMARY KEY AUTO_INCREMENT NOT NULL, 
+    username varchar(50) NOT NULL,
+    successful boolean default false,
+    loginDate DATE NOT NULL
+);
