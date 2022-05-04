@@ -114,8 +114,20 @@ include_once 'insert.php';
                     <input type="password" class="form-control" name="question" required>
                   </div>
                   <div class="col-md-6">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" name="password" required>
+                    <label for="password" class="form-label" >Password</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                    <span class="help-block">Use 8 or more characters with a mix of letters, numbers & symbols</span>
+                    <!-- Realtime Password Validation -->
+                    <div class="card mt-2 p-2 d-none" id="passwordValidation">
+                      <p>Password needs: </p>
+                      <ul>
+                        <li class="text-danger" id="letter">A <b>lowercase</b> letter</li>
+                        <li class="text-danger" id="capital">A <b>capital (uppercase)</b> letter</li>
+                        <li class="text-danger" id="number">A <b>number</b></li>
+                        <li class="text-danger" id="specialChar">A <b>special character</b></li>
+                        <li class="text-danger" id="length">Minimum <b>8 characters</b></li>
+                      </ul>
+                    </div>
                   </div>
                   <div class="col-md-6">
                     <label for="confirm_password" class="form-label">Confirm Password</label>
@@ -129,7 +141,6 @@ include_once 'insert.php';
                   </div>
                   <p class="text-center text-muted mt-5 mb-0">Already have an account? <a href="signin.php" class="fw-bold text-body"><u>Sign in</u></a></p>
                 </form>
-
               </div>
             </div>
           </div>
@@ -138,6 +149,7 @@ include_once 'insert.php';
     </div>
   </section>
   <script src="js/bootstrap.bundle.js"></script>
+  <script src="js/passwordValidation.js"></script>
  <!-- <form action="login.php" method="POST">
             <input type="text" name="username" placeholder="Username">
             <input type="password" name="password" placeholder="Password">

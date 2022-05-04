@@ -1,9 +1,19 @@
 body {
     text-align: center;
 }
+
 form {
     display: inline-block;
     
+}
+
+#passwordValidation {
+    text-align: left;
+}
+
+.help-block {
+    text-align: left;
+    font-size: 11px;
 }
 
 .signuperror {
