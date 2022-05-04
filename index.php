@@ -58,6 +58,12 @@ include_once 'insert.php';
             else if ($_GET["error"] == "access=denied") {
               echo'<p class="signuperror">Acces denied, please create an account and login to visit this page!';
             }
+            else if ($_GET["error"] == "emailnotexist") {
+              echo'<p class="signuperror">That email does not exist!';
+            }
+            else if ($_GET["error"] == "wrong") {
+              echo'<p class="signuperror">Wrong security answer please try again!';
+            }
           }
           // Here we create a success message if the new user was created.
           else if (isset($_GET["signup"])) {
@@ -102,6 +108,10 @@ include_once 'insert.php';
                   <div class="col-md-12">
                     <label for="email" class="form-label">Email</label>
                     <input type="email" class="form-control" name="email" required>
+                  </div>
+                  <div class="col-md-12">
+                    <label for="question" class="form-label">Provide an answer to a security question of your own and never forget it.</label>
+                    <input type="password" class="form-control" name="question" required>
                   </div>
                   <div class="col-md-6">
                     <label for="password" class="form-label">Password</label>

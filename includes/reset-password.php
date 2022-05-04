@@ -10,12 +10,24 @@ if (isset($_POST['reset-password-submit'])) {
   $passwordRepeat = $_POST['pwd-repeat'];
 
   //grab security question answer from form
+  $secquestion = $_POST['question'];
 
   //for password strength 
     $number = preg_match('@[0-9]@', $password);
     $uppercase = preg_match('@[A-Z]@', $password);
     $lowercase = preg_match('@[a-z]@', $password);
     $specialChars = preg_match('@[^\w]@', $password);
+
+  //get security question from table
+  $userEmail = $_POST['email'];
+  require '../insert.php';
+  $sql = "SELECT question FROM users WHERE email='$userEmail'";
+  $result = mysqli_query($conn, $sql);
+  $row = mysqli_fetch_assoc($result);
+
+  //UNHASH QUESTION
+  $qCheck = password_verify($secquestion, $row['question']);
+  
 
   if (empty($password) || empty($passwordRepeat)) {
     header("Location: ../index.php?error=newpwd=empty");
@@ -26,6 +38,10 @@ if (isset($_POST['reset-password-submit'])) {
   }
   else if (strlen($password) < 8 || !$number || !$uppercase || !$lowercase || !$specialChars) {
     header("Location: ../index.php?error=passwordstrength&uid=");
+    exit();
+  }
+  else if ($qCheck == false) {
+    header("Location: ../index.php?error=wrong");
     exit();
   }
 

@@ -1,3 +1,4 @@
+<?php date_default_timezone_set('America/Los_Angeles'); ?>
 <?php 
 include_once 'insert.php';
 session_start();
@@ -40,7 +41,7 @@ if (empty($_SESSION['id']) || $_SESSION['email'] == '') {
           <h5 class="card-title">Hi user <?php echo $firstName . '&nbsp' . $lastName?> you are logged in!</h5>
           </div>
           <div class="d-flex justify-content-center">
-          <h5 class="card-title">"User" has been logged in "#" amount of times and your last login date is num/num/num</h5>
+          <h5 class="card-title"><?php echo $firstName . '&nbsp' . $lastName?> has been logged in "#" amount of times and your last login date was</h5>
           </div>
           <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
           <div class="d-flex justify-content-center">

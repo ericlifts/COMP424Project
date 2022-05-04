@@ -24,7 +24,8 @@ if (isset($_POST['login-submit'])) {
       mysqli_stmt_bind_param($stmt, "ss", $mailuid, $mailuid);
       mysqli_stmt_execute($stmt);
       $result = mysqli_stmt_get_result($stmt);
-      
+
+
       if ($row = mysqli_fetch_assoc($result)) {
         $pwdCheck = password_verify($password, $row['password']);
        // $pwdCheck = $row['password'];//replace with above code for hasing password
@@ -33,6 +34,11 @@ if (isset($_POST['login-submit'])) {
           exit();
         }
         else if ($pwdCheck == true) {
+
+          $verified = $row['verified'];
+
+          if($verified == 1) {
+
           session_start();
           $_SESSION['id'] = $row['username'];
           $_SESSION['email'] = $row['email'];
@@ -42,6 +48,11 @@ if (isset($_POST['login-submit'])) {
          
           header("Location: webpage.php?login=success");
           exit();
+          }
+          else {
+            header("Location: signin.php?error=accountnotactivated");
+            exit();
+          }
         }
       }
       else {

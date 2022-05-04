@@ -5,11 +5,15 @@ if(isset($_POST["reset-request-submit"])) {
 
     //tokens 
     $selector = bin2hex(random_bytes(8));
+
+    //convert our token generates random bytes
     $token = random_bytes(32);
 
+    //bin2hex converts bytes to hexadecimal format 
     $url = "localhost/COMP424Project/create-new-password.php?selector=" . $selector . "&validator=" . bin2hex($token);
 
-    $expires = date("U") + 1800;
+    //email link will expire in 10 minutes
+    $expires = date("U") + 600;
 
     require '../insert.php';
 
@@ -19,6 +23,16 @@ if(isset($_POST["reset-request-submit"])) {
     require_once "../PHPMailer/src/Exception.php";
 
     $userEmail = $_POST["email"];
+
+    //check if email exists
+        $sql = "SELECT * FROM users WHERE email='$userEmail'";
+        $result = mysqli_query($conn, $sql);
+        $resultCheck = mysqli_num_rows($result);
+   
+        if($resultCheck == 0) {
+         header("Location: ../reset-password.php?error=emailnotexist");
+         exit();
+        }
 
     $sql = "DELETE FROM pwdReset WHERE pwdResetEmail=?;";
     $stmt = mysqli_stmt_init($conn);
@@ -84,7 +98,8 @@ if(isset($_POST["reset-request-submit"])) {
     $mail->setFrom($from, $name);
     $mail->addAddress($to); // enter email address whom you want to send
     $mail->Subject = ("$subject");
-    $mail->Body = '<p>Here is your password reset link: <a href="' . $url . '">' . $url . '</a></p>';
+    $mail->Body = '<p>IF YOU DID NOT REQUEST THIS THEN IGNORE THIS EMAIL! </p><p>THIS LINK WILL EXPIRE IN 10 MINUTES! 
+    </p><p>Here is your password reset link: <a href="' . $url . '">' . $url . '</a></p>';
     $mail-> send();
 
     header("Location: ../reset-password.php?reset=success");
