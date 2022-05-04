@@ -96,7 +96,12 @@ if (isset($_POST['submit']) && ($_POST['g-recaptcha-response'] != "")) {
          exit();
         }
       else {
-        $sql = "INSERT INTO users(username, password, firstName, lastName, birthday, question, vkey, email) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+       //resetPassQs
+       // $sql = "INSERT INTO users(username, password, firstName, lastName, birthday, question, vkey, email) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+        
+       //main
+        $sql = "INSERT INTO users(username, password, firstName, lastName, birthday, question, vkey, numLogins, email) VALUES (?, ?, ?, ?, ?, ?, ?, 1, ?);";
+
         $stmt = mysqli_stmt_init($conn);
         
         if (!mysqli_stmt_prepare($stmt, $sql)) {

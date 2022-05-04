@@ -30,6 +30,15 @@ if (isset($_POST['login-submit'])) {
         $pwdCheck = password_verify($password, $row['password']);
        // $pwdCheck = $row['password'];//replace with above code for hasing password
         if ($pwdCheck == false) { // if ($pwdCheck == false)
+          // Update loginAttempts database to store unsuccessfull login attempt
+          $username = $row["username"];
+          // Get the current date
+          date_default_timezone_set('America/Los_Angeles');
+          $date = date("Y/m/d H:i:s");
+
+          $loginSQL = "INSERT INTO loginAttempts(username, successful, loginDate) VALUES ('$username', 0, '$date')";
+          mysqli_query($conn, $loginSQL);
+
           header("Location: signin.php?error=wrongpwd");
           exit();
         }
@@ -44,6 +53,22 @@ if (isset($_POST['login-submit'])) {
           $_SESSION['email'] = $row['email'];
           $_SESSION['firstname'] = $row['firstName'];
           $_SESSION['lastname'] = $row['lastName'];
+          $_SESSION['numLogins'] = $row['numLogins'];
+
+          // Get the current date
+          date_default_timezone_set('America/Los_Angeles');
+          $date = date("Y/m/d H:i:s");
+          $_SESSION['loginDate'] = $date;
+
+          // Update the number of logins and last login date for the user
+          $email = $row["email"];
+          $username = $row["username"];
+          $updateSQL = "UPDATE users SET numLogins=numLogins + 1, loginDate=\"$date\" WHERE username=\"$username\" OR email=\"$email\"";
+          mysqli_query($conn, $updateSQL);
+
+          // Update loginAttmpts database to store successful login attempt
+          $loginSQL = "INSERT INTO loginAttempts(username, successful, loginDate) VALUES ('$username', 1, '$date')";
+          mysqli_query($conn, $loginSQL);
 
          
           header("Location: webpage.php?login=success");
