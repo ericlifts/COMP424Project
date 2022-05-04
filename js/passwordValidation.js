@@ -1,4 +1,4 @@
-const myInput = document.getElementById("password");
+const password = document.getElementById("password");
 const letter = document.getElementById("letter");
 const capital = document.getElementById("capital");
 const number = document.getElementById("number");
@@ -7,8 +7,8 @@ const length = document.getElementById("length");
 const validationCard = document.getElementById("passwordValidation");
 let metRequirements = false;
 
-// When the user clicks on the password field, show the message box
-myInput.onfocus = function() {
+// Display password validation card when the password input field is clicked
+password.onfocus = function() {
     // Variable declarations
     const upperCaseLetters = /[A-Z]/g;
     const lowerCaseLetters = /[a-z]/g;
@@ -24,10 +24,10 @@ myInput.onfocus = function() {
         validationCard.classList.add("d-none");
     }
 
-    // When the user starts to type something inside the password field
-    myInput.onkeyup = function() {
+    // Dynamically check password to see if it meets the requirements
+    password.onkeyup = function() {
         // Validate lowercase letters
-        if(myInput.value.match(lowerCaseLetters)) {
+        if(password.value.match(lowerCaseLetters)) {
             letter.classList.add("d-none");
             metRequirements = true;
         } else {
@@ -36,7 +36,7 @@ myInput.onfocus = function() {
         }
 
         // Validate capital letters
-        if(myInput.value.match(upperCaseLetters)) {
+        if(password.value.match(upperCaseLetters)) {
             capital.classList.add("d-none");
 
             metRequirements = true;
@@ -46,7 +46,7 @@ myInput.onfocus = function() {
         }
 
         // Validate numbers
-        if(myInput.value.match(numbers)) {
+        if(password.value.match(numbers)) {
             number.classList.add("d-none");
             metRequirements = true;
         } else {
@@ -55,7 +55,7 @@ myInput.onfocus = function() {
         }
 
         // Validate special characters
-        if(myInput.value.match(specialChars)) {
+        if(password.value.match(specialChars)) {
             specialChar.classList.add("d-none");
             metRequirements = true;
         } else {
@@ -64,7 +64,7 @@ myInput.onfocus = function() {
         }
 
         // Validate length
-        if(myInput.value.length >= 8) {
+        if(password.value.length >= 8) {
             length.classList.add("d-none");
             metRequirements = true;
         } else {
