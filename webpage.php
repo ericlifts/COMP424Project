@@ -1,3 +1,4 @@
+<?php date_default_timezone_set('America/Los_Angeles'); ?>
 <?php 
 include_once 'insert.php';
 session_start();
@@ -37,6 +38,17 @@ if (empty($_SESSION['id']) || $_SESSION['email'] == '') {
 <body>
   <div class="d-flex justify-content-center">
     <div class="card" style="width: 80rem;">
+        <!-- resetPassq branch -->
+       <!-- <div class="card-body">
+            <div class="d-flex justify-content-center">
+          <h5 class="card-title">Hi user <?php echo $firstName . '&nbsp' . $lastName?> you are logged in!</h5>
+          </div>
+          <div class="d-flex justify-content-center">
+          <h5 class="card-title"><?php echo $firstName . '&nbsp' . $lastName?> has been logged in "#" amount of times and your last login date was</h5>
+          </div>
+          <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+        <!--  <div class="d-flex justify-content-center"> -->
+
       <div class="card-body">
         <div class="d-flex justify-content-center">
           <h5 class="card-title">Hi <?php echo $firstName . '&nbsp' . $lastName?> you are logged in!</h5>
@@ -46,6 +58,7 @@ if (empty($_SESSION['id']) || $_SESSION['email'] == '') {
         </div>
         <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
         <div class="d-flex justify-content-center">
+
           <p class="card-text"><a href="company_confidential_file.txt">Company Confidential File!</a></p>
         </div>
       </div>

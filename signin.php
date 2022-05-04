@@ -14,12 +14,22 @@ include_once 'insert.php';
         <svg class="bi me-2" width="40" height="32">
             <use xlink:href="#bootstrap"></use>
         </svg>
-        <span class="fs-4">COMP 424 Project</span>
+        <span class="fs-4">Log In</span>
     </a>
 
 </header>
 
 <body>
+<?php
+          if(isset($_SESSION['id'])) {
+            // echo '<p class = "loggedin"> You are logged in!</p>';
+            header("Location: webpage.php");
+            exit();
+          }
+          else {
+            echo '<p style = "color: red; text-align: center" class = "logout"> You are logged out!</p>';
+          }
+          ?>
     <?php 
          if (isset($_GET["error"])) {
             if ($_GET["error"] == "wrongpwd") {
@@ -31,6 +41,9 @@ include_once 'insert.php';
             else if ($_GET["error"] == "wronguidpwd") {
             echo '<p style = "text-align:center; color: red">Wrong username and password!</p>';
               }
+              else if ($_GET["error"] == "accountnotactivated") {
+                echo '<p style = "text-align:center; color: red">Your account has not been activated. Please check your email!</p>';
+                  }
         }
     ?>
     <section class="vh-100 bg-image" style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.wep');">

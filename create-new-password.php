@@ -42,14 +42,19 @@
                     <h2 class="text-uppercase text-center mb-5">Reset Password</h2>
 
                                 <form action="includes/reset-password.php" method="POST">
-
+                                <div class="form-outline mb-4">                     
+                                        <input type="email" name="email" class="form-control form-control-lg" placeholder ="Email" />
+                                    </div>
+                                <div class="form-outline mb-4">                     
+                                        <input type="password" name="question" class="form-control form-control-lg" placeholder ="Security question" />
+                                    </div>
                                     <div class="form-outline mb-4">
                                         <input type="hidden" name="selector" class="form-control form-control-lg" value = "<?php echo $selector ?>" />
                                         <input type="hidden" name="validator" class="form-control form-control-lg" value = "<?php echo $validator ?>" />
-                                        <input type="password" name="pwd" class="form-control form-control-lg" placeholder ="Enter a new password.." />
+                                        <input type="password" name="pwd" class="form-control form-control-lg" placeholder ="Enter new password.." />
                                     </div>     
                                     <div class="form-outline mb-4">                     
-                                        <input type="password" name="pwd-repeat" class="form-control form-control-lg" placeholder ="Repeat a new password.." />
+                                        <input type="password" name="pwd-repeat" class="form-control form-control-lg" placeholder ="Repeat new password.." />
                                     </div>
 
                                     <div class="d-flex justify-content-center">

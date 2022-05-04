@@ -16,6 +16,14 @@
 </header>
 
 <body>
+<?php
+          // Here we create an error message if the user made an error trying to sign up.
+          if (isset($_GET["error"])) {
+            if ($_GET["error"] == "emailnotexist") {
+              echo '<p style = "color: red; text-align: center">That email does not exist!</p>';
+            }
+        }
+?>
     <section class="vh-100 bg-image" style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.wep');">
         <div class="mask d-flex align-items-center h-100 gradient-custom-3">
             <div class="container h-100">
