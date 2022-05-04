@@ -6,6 +6,8 @@ CREATE TABLE users (
     firstName varchar(20) not null,
     lastName varchar(20) not null,
     birthday varchar(20) not null,
+    numLogins int,
+    loginDate DATE,
     email varchar(40) UNIQUE not null
 );
 
@@ -17,4 +19,12 @@ CREATE TABLE pwdReset (
     pwdResetSelector TEXT NOT NULL,
     pwdResetToken LONGTEXT NOT NULL,
     pwdResetExpires TEXT NOT NULL
+);
+
+-- TABLE FOR LOGGING LOGIN ATTEMPTS
+CREATE TABLE loginAttempts (
+	id int PRIMARY KEY AUTO_INCREMENT NOT NULL, 
+    username varchar(50) NOT NULL,
+    successful boolean default false,
+    loginDate DATE NOT NULL
 );
