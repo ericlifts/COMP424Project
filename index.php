@@ -121,11 +121,11 @@ include_once 'insert.php';
                     <div class="card mt-2 p-2 d-none" id="passwordValidation">
                       <p>Password needs: </p>
                       <ul>
-                        <li class="text-danger" id="letter">A <b>lowercase</b> letter</li>
-                        <li class="text-danger" id="capital">A <b>capital (uppercase)</b> letter</li>
+                        <li class="text-danger" id="lowercase">A <b>lowercase</b> letter</li>
+                        <li class="text-danger" id="uppercase">An <b>uppercase</b> letter</li>
                         <li class="text-danger" id="number">A <b>number</b></li>
                         <li class="text-danger" id="specialChar">A <b>special character</b></li>
-                        <li class="text-danger" id="length">Minimum <b>8 characters</b></li>
+                        <li class="text-danger" id="length">At least <b>8 characters</b></li>
                       </ul>
                     </div>
                   </div>

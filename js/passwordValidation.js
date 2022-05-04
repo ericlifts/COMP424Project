@@ -1,6 +1,6 @@
 const password = document.getElementById("password");
-const letter = document.getElementById("letter");
-const capital = document.getElementById("capital");
+const lowercase = document.getElementById("lowercase");
+const uppercase = document.getElementById("uppercase");
 const number = document.getElementById("number");
 const specialChar = document.getElementById("specialChar");
 const length = document.getElementById("length");
@@ -10,8 +10,8 @@ let metRequirements = false;
 // Display password validation card when the password input field is clicked
 password.onfocus = function() {
     // Variable declarations
-    const upperCaseLetters = /[A-Z]/g;
     const lowerCaseLetters = /[a-z]/g;
+    const upperCaseLetters = /[A-Z]/g;
     const numbers = /[0-9]/g;
     const specialChars = /[!@#$%^&*()]/g;
 
@@ -28,20 +28,20 @@ password.onfocus = function() {
     password.onkeyup = function() {
         // Validate lowercase letters
         if(password.value.match(lowerCaseLetters)) {
-            letter.classList.add("d-none");
+            lowercase.classList.add("d-none");
             metRequirements = true;
         } else {
-            letter.classList.remove("d-none");
+            lowercase.classList.remove("d-none");
             metRequirements = false;
         }
 
         // Validate capital letters
         if(password.value.match(upperCaseLetters)) {
-            capital.classList.add("d-none");
+            uppercase.classList.add("d-none");
 
             metRequirements = true;
         } else {
-            capital.classList.remove("d-none");
+            uppercase.classList.remove("d-none");
             metRequirements = false;
         }
 
