@@ -29,46 +29,47 @@ password.onfocus = function() {
         // Validate lowercase letters
         if(password.value.match(lowerCaseLetters)) {
             lowercase.classList.add("d-none");
-            metRequirements = true;
         } else {
             lowercase.classList.remove("d-none");
-            metRequirements = false;
         }
 
         // Validate capital letters
         if(password.value.match(upperCaseLetters)) {
             uppercase.classList.add("d-none");
 
-            metRequirements = true;
         } else {
             uppercase.classList.remove("d-none");
-            metRequirements = false;
         }
 
         // Validate numbers
         if(password.value.match(numbers)) {
             number.classList.add("d-none");
-            metRequirements = true;
         } else {
             number.classList.remove("d-none");
-            metRequirements = false;
         }
 
         // Validate special characters
         if(password.value.match(specialChars)) {
             specialChar.classList.add("d-none");
-            metRequirements = true;
         } else {
             specialChar.classList.remove("d-none");
-            metRequirements = false;
         }
 
         // Validate length
         if(password.value.length >= 8) {
             length.classList.add("d-none");
-            metRequirements = true;
         } else {
             length.classList.remove("d-none");
+        }
+
+        if (password.value.match(lowerCaseLetters) &&
+            password.value.match(upperCaseLetters) && 
+            password.value.match(numbers) && 
+            password.value.match(specialChars) && 
+            password.value.length >= 8
+        ) {
+            metRequirements = true;
+        } else {
             metRequirements = false;
         }
 
