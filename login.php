@@ -36,8 +36,13 @@ if (isset($_POST['login-submit'])) {
           date_default_timezone_set('America/Los_Angeles');
           $date = date("Y/m/d H:i:s");
 
-          $loginSQL = "INSERT INTO loginAttempts(username, successful, loginDate) VALUES ('$username', 0, '$date')";
-          mysqli_query($conn, $loginSQL);
+          $loginSQL = "INSERT INTO loginAttempts(username, successful, loginDate) VALUES (?, 0, ?)";
+          // mysqli_query($conn, $loginSQL);
+          $stmt5 = mysqli_stmt_init($conn);
+          mysqli_stmt_prepare($stmt5, $loginSQL);
+          mysqli_stmt_bind_param($stmt5, "ss", $username, $date);
+          mysqli_stmt_execute($stmt5);
+
 
           header("Location: signin.php?error=wrongpwd");
           exit();
@@ -63,13 +68,21 @@ if (isset($_POST['login-submit'])) {
           // Update the number of logins and last login date for the user
           $email = $row["email"];
           $username = $row["username"];
-          $updateSQL = "UPDATE users SET numLogins=numLogins + 1, loginDate=\"$date\" WHERE username=\"$username\" OR email=\"$email\"";
-          mysqli_query($conn, $updateSQL);
+          $updateSQL = "UPDATE users SET numLogins=numLogins + 1, loginDate=? WHERE username=? OR email=?";
+          // mysqli_query($conn, $updateSQL);
+          $stmt4 = mysqli_stmt_init($conn);
+          mysqli_stmt_prepare($stmt4, $updateSQL);
+          mysqli_stmt_bind_param($stmt4, "sss", $date, $username, $email);
+          mysqli_stmt_execute($stmt4);
 
           // Update loginAttmpts database to store successful login attempt
-          $loginSQL = "INSERT INTO loginAttempts(username, successful, loginDate) VALUES ('$username', 1, '$date')";
-          mysqli_query($conn, $loginSQL);
-
+          $loginSQL = "INSERT INTO loginAttempts(username, successful, loginDate) VALUES ( ?, 1, ?)";
+          // mysqli_query($conn, $loginSQL);
+          
+          $stmt2 = mysqli_stmt_init($conn);
+          mysqli_stmt_prepare($stmt2, $loginSQL);
+          mysqli_stmt_bind_param($stmt2, "ss",  $username, $date);
+          mysqli_stmt_execute($stmt2);
          
           header("Location: webpage.php?login=success");
           exit();
