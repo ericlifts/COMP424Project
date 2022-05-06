@@ -45,7 +45,7 @@ if (empty($_SESSION['id']) || $_SESSION['email'] == '') {
           </div>
           <div class="d-flex justify-content-center">
           <h5 class="card-title"><?php echo $firstName . '&nbsp' . $lastName?> has been logged in "#" amount of times and your last login date was</h5>
-          </div>
+          </div> -->
           <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
         <!--  <div class="d-flex justify-content-center"> -->
 
@@ -59,7 +59,7 @@ if (empty($_SESSION['id']) || $_SESSION['email'] == '') {
         <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
         <div class="d-flex justify-content-center">
 
-          <p class="card-text"><a href="company_confidential_file.txt">Company Confidential File!</a></p>
+          <p class="card-text"><a href="company_confidential_file.txt" download>Company Confidential File!</a></p>
         </div>
       </div>
     </div>

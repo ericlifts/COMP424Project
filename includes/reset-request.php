@@ -12,8 +12,8 @@ if(isset($_POST["reset-request-submit"])) {
     //bin2hex converts bytes to hexadecimal format 
     $url = "localhost/COMP424Project/create-new-password.php?selector=" . $selector . "&validator=" . bin2hex($token);
 
-    //email link will expire in 10 minutes
-    $expires = date("U") + 600;
+    //email link will expire in 5 minutes
+    $expires = date("U") + 300;
 
     require '../insert.php';
 
@@ -98,7 +98,7 @@ if(isset($_POST["reset-request-submit"])) {
     $mail->setFrom($from, $name);
     $mail->addAddress($to); // enter email address whom you want to send
     $mail->Subject = ("$subject");
-    $mail->Body = '<p>IF YOU DID NOT REQUEST THIS THEN IGNORE THIS EMAIL! </p><p>THIS LINK WILL EXPIRE IN 10 MINUTES! 
+    $mail->Body = '<p>IF YOU DID NOT REQUEST THIS THEN IGNORE THIS EMAIL! </p><p>THIS LINK WILL EXPIRE IN 5 MINUTES! 
     </p><p>Here is your password reset link: <a href="' . $url . '">' . $url . '</a></p>';
     $mail-> send();
 

@@ -39,6 +39,9 @@ include_once 'insert.php';
             else if ($_GET["error"] == "emailexist") {
               echo '<p class="signuperror">This email is taken!</p>';
             }
+            else if ($_GET["error"] == "wrong") {
+              echo'<p class="signuperror">Wrong security answer please try again!';
+            }
             else if ($_GET["error"] == "passwordcheck") {
               echo '<p class="signuperror">Your passwords do not match!</p>';
             }
@@ -61,9 +64,9 @@ include_once 'insert.php';
             else if ($_GET["error"] == "emailnotexist") {
               echo'<p class="signuperror">That email does not exist!';
             }
-            else if ($_GET["error"] == "wrong") {
-              echo'<p class="signuperror">Wrong security answer please try again!';
-            }
+            // else if ($_GET["error"] == "wrong") {
+            //   echo'<p class="signuperror">Wrong security answer please try again!';
+            // }
           }
           // Here we create a success message if the new user was created.
           else if (isset($_GET["signup"])) {

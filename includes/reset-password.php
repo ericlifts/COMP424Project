@@ -29,7 +29,11 @@ if (isset($_POST['reset-password-submit'])) {
   $qCheck = password_verify($secquestion, $row['question']);
   
 
-  if (empty($password) || empty($passwordRepeat)) {
+  if ($qCheck == false) {
+    header("Location: ../index.php?error=wrong");
+    exit();
+  }
+ else if (empty($password) || empty($passwordRepeat)) {
     header("Location: ../index.php?error=newpwd=empty");
     exit();
   } else if ($password != $passwordRepeat) {
